@@ -5,10 +5,10 @@ export const Navbar = () => {
     return(
         <div>
             <div className="bg-red-900 p-3 text-white text-center">
-                <h1>Save time at Pre-order. Choose your items through our new services   <Link className="text-green-700 hover:text-green-900">Learn More</Link></h1>
+                <h1 className="text-sm md:text-lg">Save time at Pre-order. Choose your items through our new services   <Link className="text-green-400 hover:text-green-500">Learn More</Link></h1>
             </div>
-            <div className="bg-green-900 p-3 text-white text-center">
-                <h1>Images and products used in this website are only for portfolio purpose</h1>
+            <div className="hidden md:grid bg-green-900 p-3 text-white">
+                <h1 className="text-center">Images and products used in this website are only for portfolio purpose</h1>
             </div>
             <div className="p-3 mp-4 flex justify-around bg-gradient-to-r from-blue-800 to-blue-900 text-white">
                 <div className="hidden md:flex">
