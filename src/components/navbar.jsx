@@ -14,7 +14,7 @@ export const Navbar = () => {
                 <div className="hidden md:flex">
                     <h1>LKH Store</h1>
                 </div>
-                <nav className="flex">
+                <nav className="flex justify-between">
                     <Link to={"/"} className="pl-5">Shop</Link>
                     <Link to={"/cart"} className="pl-5">Cart</Link>
                 </nav>
