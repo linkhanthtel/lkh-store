@@ -138,5 +138,33 @@ export const Data = [
         condition: "New",
         price: 1199,
         imageURL: "/images/iphone15promax.jpg"
-    }
+    },
+    {
+        id: 21,
+        item: "Samsung S24 Ultra",
+        condition: "New",
+        price: 2100,
+        imageURL: "/images/samsungs24ultra.jpg"
+    },
+    {
+        id: 22,
+        item: "Macbook Pro 13(M3 Max)",
+        condition: "New",
+        price: 3100,
+        imageURL: "/images/mbpm3max.jpg"
+    },
+    {
+        id: 23,
+        item: "Macbook Pro 16(M3 Max)",
+        condition: "New",
+        price: 3900,
+        imageURL: "/images/mbpm3max16.jpg"
+    },
+    {
+        id: 24,
+        item: "Apple Watch Ultra",
+        condition: "New",
+        price: 781,
+        imageURL: "/images/iwatchultra.jpg"
+    },
 ]

@@ -3,7 +3,7 @@ import { ShopItems } from "../components/shopitems"
 
 export const Shop = () => {
     return(
-        <div className="grid grid-cols-1 md:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-2">
             {Data.map((item) => 
             (<div key={item.id}><ShopItems {...item} /></div>)
             )}
