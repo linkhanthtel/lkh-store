@@ -15,9 +15,9 @@ export const Navbar = () => {
                 <nav className="flex justify-between items-center">
                     <Link to={"/"} className="pr-5 hover:text-blue-500">Shop</Link>
                     <Link to={"/cart"} className="pr-5 hover:text-blue-500">Cart</Link>
+                    <Link to={"/bestsellers"} className="pr-5 hover:text-blue-500">Best Sellers</Link>
                     {/* <Link to={"#"} className="pr-5 hover:text-blue-500">Support</Link>
                     <Link to={"#"} className="pr-5 hover:text-blue-500">Gift Card</Link>
-                    <Link to={"/bestsellers"} className="pr-5 hover:text-blue-500">Best Sellers</Link>
                     <Link to={"#"} className="pr-5 hover:text-blue-500">Discount</Link> */}
                 </nav>
                 <div className="flex">
