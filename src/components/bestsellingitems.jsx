@@ -1,0 +1,53 @@
+import { useContext } from "react";
+import { ShopContext } from "../contexts/shopcontext";
+import { BsCart2 } from "react-icons/bs";
+import { MdDeleteForever } from "react-icons/md";
+import { TiStarburst } from "react-icons/ti";
+
+function BestSellingItems({id,item,condition,price,imageURL}) {
+    const {getItemQuantity, increaseItemQuantity, decreaseItemQuantity, removeItem} = useContext(ShopContext)
+    const quantity = getItemQuantity(id);
+
+    return(
+        <div>
+            <div className="absolute justify-end">
+                <TiStarburst className="text-5xl text-red-500" />
+            </div>
+
+            <div className="bg-white flex flex-col p-2 border-2 hover:shadow-xl">
+            <img src={imageURL} style={{height: "200px", objectFit: "contain"}} />
+            <div className="flex flex-col justify-center text-center p-3">
+                <h1 className="my-2 text-md">{item}</h1>
+                <h1 className="my-2 text-sm">${price}</h1>
+                <h2 className="text-red-800 font-bold">{condition}</h2>
+            </div>
+
+            {quantity > 0 ? 
+                <div>
+                    <div className="flex justify-center">
+                        <button className="p-3 m-2 bg-gray-500 text-white" onClick={() => increaseItemQuantity(id)}>+</button>
+                        <h1 className="p-3 m-2 bg-green-600 text-white">{quantity}</h1>
+                        <button className="p-3 m-2 bg-gray-500 text-white" onClick={() => decreaseItemQuantity(id)}>-</button>
+                    </div>
+                    <div className="w-64 rounded-lg md:w-auto flex justify-center self-center text-white bg-red-700 hover:bg-red-800">
+                        <button className="flex justify-center p-3" onClick={() => removeItem(id)}>
+                        <MdDeleteForever className="flex self-center text-2xl" />
+                        <span className="mx-3 rounded-lg">Remove</span>
+                        </button>
+                    </div>
+                </div>
+            :
+            <div className="flex justify-center">
+                <button className="flex rounded-lg p-3 m-3 bg-green-700 hover:bg-green-800 text-white" onClick={() => increaseItemQuantity(id)}>
+                    <BsCart2 className="flex self-center text-2xl" />
+                    <span className="mx-3">Add to carts</span>
+                </button>
+            </div>      
+            }
+            
+            </div>
+        </div>
+  )
+}
+
+export default BestSellingItems
