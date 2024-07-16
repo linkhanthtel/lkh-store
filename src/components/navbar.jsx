@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 import { BsMinecart } from "react-icons/bs";
-import { BsStars } from "react-icons/bs";
+import { TiStarburst } from "react-icons/ti";
 import { CiMenuFries } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 
@@ -17,7 +17,7 @@ export const Navbar = () => {
 
     return(
         <div>
-            <div className="flex md:hidden justify-between p-2 bg-blue-950">
+            <div className="flex md:hidden justify-between p-5 bg-blue-950">
                 <button onClick={() => setToggle(!toggle)}>
                     {toggle ? (<RxCross2 className="text-3xl text-white" />) : (<CiMenuFries className="text-3xl text-white" />)}
                 </button>
@@ -32,7 +32,7 @@ export const Navbar = () => {
                             <BsMinecart className="flex self-center mx-1" />Cart
                         </Link>
                         <Link to={"/bestsellers"} className="flex pr-4 py-4 hover:text-blue-500">
-                            <BsStars className="flex self-center mx-1" />Best Sellers
+                            <TiStarburst className="flex self-center mx-1" />Best Sellers
                         </Link>
                     </nav>
                 </div>
@@ -40,7 +40,7 @@ export const Navbar = () => {
                 <div></div>
             )}
 
-            {/* 1920px */}
+            {/* Large Screen */}
             <div className="hidden md:flex justify-between p-2 bg-blue-950 text-white">
                 <div className="flex justify-center text-center self-center">
                     <h1>LKH Store</h1>
@@ -56,7 +56,7 @@ export const Navbar = () => {
                         <BsMinecart className="flex self-center mx-1" />Cart
                     </Link>
                     <Link to={"/bestsellers"} className="flex pr-4 hover:text-blue-500">
-                        <BsStars className="flex self-center mx-1" />Best Sellers
+                        <TiStarburst className="flex self-center mx-1" />Best Sellers
                     </Link>
                 </nav>
                 <div className="flex">
