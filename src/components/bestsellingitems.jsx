@@ -23,26 +23,26 @@ function BestSellingItems({id,item,condition,price,imageURL}) {
             </div>
 
             {quantity > 0 ? 
-                <div>
-                    <div className="flex justify-center">
-                        <button className="p-3 m-2 bg-gray-500 text-white" onClick={() => increaseItemQuantity(id)}>+</button>
-                        <h1 className="p-3 m-2 bg-green-600 text-white">{quantity}</h1>
-                        <button className="p-3 m-2 bg-gray-500 text-white" onClick={() => decreaseItemQuantity(id)}>-</button>
-                    </div>
-                    <div className="w-64 rounded-lg md:w-auto flex justify-center self-center text-white bg-red-700 hover:bg-red-800">
-                        <button className="flex justify-center p-3" onClick={() => removeItem(id)}>
-                        <MdDeleteForever className="flex self-center text-2xl" />
-                        <span className="mx-3 rounded-lg">Remove</span>
-                        </button>
-                    </div>
+                <div className="flex flex-col justify-center">
+                <div className="flex w-40 justify-around self-center border border-blue-950 rounded-full mb-3">
+                    <button className="p-1 text-blue-950" onClick={() => increaseItemQuantity(id)}>+</button>
+                    <h1 className="p-1 text-blue-950">{quantity}</h1>
+                    <button className="p-1 text-blue-950" onClick={() => decreaseItemQuantity(id)}>-</button>
                 </div>
+                <div className="w-64 rounded-lg md:w-auto flex justify-center items-center self-center text-white bg-red-700 hover:bg-red-800">
+                    <button className="flex justify-center p-3" onClick={() => removeItem(id)}>
+                    <MdDeleteForever className="flex self-center text-2xl" />
+                    <span className="mx-3 rounded-lg">Remove</span>
+                    </button>
+                </div>
+            </div>
             :
             <div className="flex justify-center">
                 <button className="flex rounded-lg p-3 m-3 bg-green-700 hover:bg-green-800 text-white" onClick={() => increaseItemQuantity(id)}>
                     <BsCart2 className="flex self-center text-2xl" />
                     <span className="mx-3">Add to carts</span>
                 </button>
-            </div>      
+            </div>       
             }
             
             </div>
