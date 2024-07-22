@@ -41,9 +41,10 @@ export const Navbar = () => {
             )}
 
             {/* Large Screen */}
-            <div className="hidden md:flex justify-between p-2 bg-blue-950 text-white">
+            <div className="hidden md:flex justify-between p-2 bg-slate-900 text-white">
                 <div className="flex justify-center text-center self-center">
-                    <h1>LKH Store</h1>
+                    <img src="logo.png" alt="Logo" className="w-8 h-7" />
+                    <h1 className="px-3">LKH Store</h1>
                 </div>
                 <input type="text" placeholder="Search" className="p-2 w-72 text-sm text-slate-950 rounded-2xl" />
             </div>
