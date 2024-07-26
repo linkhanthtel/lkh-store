@@ -24,8 +24,8 @@ export const ShopItems = ({id,item,condition,price,imageURL}) => {
                     </div>
                     <div className="w-64 rounded-lg md:w-auto flex justify-center items-center self-center text-white bg-red-700 hover:bg-red-800">
                         <button className="flex justify-center p-3" onClick={() => removeItem(id)}>
-                        <MdDeleteForever className="flex self-center text-2xl" />
-                        <span className="mx-3 rounded-lg">Remove</span>
+                            <MdDeleteForever className="flex self-center text-2xl" />
+                            <span className="mx-3 rounded-lg">Remove</span>
                         </button>
                     </div>
                 </div>
