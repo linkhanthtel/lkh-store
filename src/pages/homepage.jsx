@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { CiCircleCheck } from "react-icons/ci";
+import appScreenShot from "../images/appScreenShot.png"
 
 const includedFeatures = [
     'Private forum access',
@@ -29,20 +31,20 @@ function HomePage() {
             </svg>
             <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
                 <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Boost your productivity.
+                Discover your style
                 <br />
                 Start using our app today.
                 </h2>
                 <p className="mt-6 text-lg leading-8 text-gray-300">
-                Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.
+                Stay connected and entertained on the go with our versatile tablets. Perfect for work, study, or leisure.
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-                <a
-                    href="#"
+                <Link
+                    to="/shop"
                     className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                     Get started
-                    </a>
+                </Link>
                 <a href="#" className="text-sm font-semibold leading-6 text-white">
                     Learn more <span aria-hidden="true">→</span>
                 </a>
@@ -51,7 +53,7 @@ function HomePage() {
             <div className="relative mt-16 h-80 lg:mt-8">
                 <img
                 alt="App screenshot"
-                src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+                src={appScreenShot}
                 width={1824}
                 height={1080}
                 className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
@@ -61,22 +63,19 @@ function HomePage() {
         </div>
         </div>
 
-
-        <div className="bg-white py-24 sm:py-32">
+        <div className="bg-white py-12 sm:py-28">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl sm:text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Simple no-tricks pricing</h2>
                 <p className="mt-6 text-lg leading-8 text-gray-600">
-                    Distinctio et nulla eum soluta et neque labore quibusdam. Saepe et quasi iusto modi velit ut non voluptas
-                    in. Explicabo id ut laborum.
+                    Choose the Membership That's Right for You
                 </p>
                 </div>
                 <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
                 <div className="p-8 sm:p-10 lg:flex-auto">
                     <h3 className="text-2xl font-bold tracking-tight text-gray-900">Lifetime membership</h3>
                     <p className="mt-6 text-base leading-7 text-gray-600">
-                    Lorem ipsum dolor sit amet consect etur adipisicing elit. Itaque amet indis perferendis blanditiis
-                    repellendus etur quidem assumenda.
+                    Enjoy unlimited access to the latest tech gadgets and accessories, without ever having to pay full price again.
                     </p>
                     <div className="mt-10 flex items-center gap-x-4">
                     <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">What’s included</h4>
@@ -99,8 +98,8 @@ function HomePage() {
                     <div className="mx-auto max-w-xs px-8">
                         <p className="text-base font-semibold text-gray-600">Pay once, own it forever</p>
                         <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                        <span className="text-5xl font-bold tracking-tight text-gray-900">$349</span>
-                        <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">USD</span>
+                        <span className="text-5xl font-bold tracking-tight text-gray-900">$100</span>
+                        <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">SGD</span>
                         </p>
                         <a
                         href="#"
@@ -117,6 +116,30 @@ function HomePage() {
                 </div>
             </div>
         </div>
+
+        <section className="relative isolate overflow-hidden bg-white px-6 py-5 sm:py-24 lg:px-8">
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
+            <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
+            <div className="mx-auto max-w-2xl lg:max-w-4xl">
+                <figure className="mt-10">
+                <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+                    <p>
+                    "The customer service was exceptional. I had a question about my order and received a prompt and helpful response. The product arrived well-packaged and in perfect condition."
+                    </p>
+                </blockquote>
+                <figcaption className="mt-10">
+                    <img
+                    alt=""
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    className="mx-auto h-10 w-10 rounded-full"
+                    />
+                    <div className="mt-4 flex items-center justify-center space-x-3 text-base">
+                    <div className="font-semibold text-gray-900">David</div>
+                    </div>
+                </figcaption>
+                </figure>
+            </div>
+        </section>
 
 
     </div>
