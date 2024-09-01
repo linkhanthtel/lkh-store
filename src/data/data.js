@@ -167,4 +167,18 @@ export const Data = [
         price: 781,
         imageURL: "/images/iwatchultra.jpg"
     },
+    {
+        id: 25,
+        item: "iPad Pro M2",
+        condition: "New",
+        price: 800,
+        imageURL: "/images/ipadprom2.jpg"
+    },
+    {
+        id: 26,
+        item: "iWatch Series 9",
+        condition: "New",
+        price: 710,
+        imageURL: "/images/iwatchseries9.jpg"
+    },
 ]

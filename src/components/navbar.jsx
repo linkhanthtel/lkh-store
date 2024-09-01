@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation } from "react-router-dom";
+import { ImHome3 } from "react-icons/im";
 import { FaShoppingBag } from "react-icons/fa";
 import { BsMinecart } from "react-icons/bs";
-import { TiStarburst } from "react-icons/ti";
+import { MdSell } from "react-icons/md";
 import { CiMenuFries } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 
@@ -26,13 +27,16 @@ export const Navbar = () => {
                 <div>
                     <nav className="w-screen h-screen flex flex-col pl-20 bg-blue-950 text-white">
                         <Link to={"/"} className="flex pr-4 py-4 hover:text-blue-500">
+                            <ImHome3 className="flex self-center mx-1" />Home
+                        </Link>
+                        <Link to={"/shop"} className="flex pr-4 py-4 hover:text-blue-500">
                             <FaShoppingBag className="flex self-center mx-1" />Shop
                         </Link>
                         <Link to={"/cart"} className="flex pr-4 py-4 hover:text-blue-500">
                             <BsMinecart className="flex self-center mx-1" />Cart
                         </Link>
                         <Link to={"/bestsellers"} className="flex pr-4 py-4 hover:text-blue-500">
-                            <TiStarburst className="flex self-center mx-1" />Best Sellers
+                            <MdSell className="flex self-center mx-1" />Best Sellers
                         </Link>
                     </nav>
                 </div>
@@ -51,13 +55,16 @@ export const Navbar = () => {
             <div className="hidden md:flex p-3 justify-between bg-gradient-to-r from-slate-800 to-slate-900 text-white">
                 <nav className="flex justify-between items-center">
                     <Link to={"/"} className="flex pr-4 hover:text-blue-500">
+                        <ImHome3 className="flex self-center mx-1" />Home
+                    </Link>
+                    <Link to={"/shop"} className="flex pr-4 hover:text-blue-500">
                         <FaShoppingBag className="flex self-center mx-1" />Shop
                     </Link>
                     <Link to={"/cart"} className="flex pr-4 hover:text-blue-500">
                         <BsMinecart className="flex self-center mx-1" />Cart
                     </Link>
                     <Link to={"/bestsellers"} className="flex pr-4 hover:text-blue-500">
-                        <TiStarburst className="flex self-center mx-1" />Best Sellers
+                        <MdSell className="flex self-center mx-1" />Best Sellers
                     </Link>
                 </nav>
                 <div className="flex">
