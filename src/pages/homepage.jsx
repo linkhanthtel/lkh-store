@@ -8,13 +8,19 @@ const includedFeatures = [
     'Member resources',
     'Entry to annual conference',
     'Official member t-shirt',
-  ]
+]
+
+const stats = [
+    { id: 1, name: 'Products', value: '+100' },
+    { id: 2, name: 'Customer Satisfaction', value: '5 Stars' },
+    { id: 3, name: 'Number of users', value: '1K' },
+]
 
 function HomePage() {
   return (
     <div>
-        <div className="bg-white">
-        <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="bg-blue-900">
+        <div className="mx-auto max-w-7xl py-0 xl:py-10 sm:px-6 lg:px-8">
             <div className="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
             <svg
                 viewBox="0 0 1024 1024"
@@ -93,7 +99,7 @@ function HomePage() {
                     ))}
                     </ul>
                 </div>
-                <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+                <div className="mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
                     <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                     <div className="mx-auto max-w-xs px-8">
                         <p className="text-base font-semibold text-gray-600">Pay once, own it forever</p>
@@ -117,7 +123,7 @@ function HomePage() {
             </div>
         </div>
 
-        <section className="relative isolate overflow-hidden bg-white px-6 py-5 sm:py-24 lg:px-8">
+        <section className="relative isolate overflow-hidden bg-white px-6 py-5 xl:py-32 lg:px-8">
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
             <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
             <div className="mx-auto max-w-2xl lg:max-w-4xl">
@@ -128,11 +134,6 @@ function HomePage() {
                     </p>
                 </blockquote>
                 <figcaption className="mt-10">
-                    <img
-                    alt=""
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    className="mx-auto h-10 w-10 rounded-full"
-                    />
                     <div className="mt-4 flex items-center justify-center space-x-3 text-base">
                     <div className="font-semibold text-gray-900">David</div>
                     </div>
@@ -140,6 +141,21 @@ function HomePage() {
                 </figure>
             </div>
         </section>
+
+        <div className="bg-gray-200 py-24 sm:py-32">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+                {stats.map((stat) => (
+                    <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-4">
+                    <dt className="text-base leading-7 text-gray-600">{stat.name}</dt>
+                    <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                        {stat.value}
+                    </dd>
+                    </div>
+                ))}
+                </dl>
+            </div>
+        </div>
 
 
     </div>
