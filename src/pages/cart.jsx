@@ -14,7 +14,7 @@ export const Cart = ({id,item,condition,price,imageURL}) => {
             { cartItem < 1 ? (
                 <div className="text-center justify-center h-screen">
                     <h1 className="text-3xl">No item in the order lists</h1>
-                    <button className="p-5 bg-green-400 mt-10 rounded-full hover:bg-green-600"><Link to="/">Order items</Link></button>
+                    <button className="p-5 bg-green-400 mt-10 rounded-full hover:bg-green-600"><Link to="/shop">Order items</Link></button>
                 </div>
             ) : (
                 <div className="grid grid-rows-1 justify-center align-items-center shawdow-2xl">
