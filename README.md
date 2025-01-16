@@ -1,8 +1,35 @@
-## LKH Online Store
+# LKH Store
 
-In this online store website, you can order various items with different conditions. You can choose the quantity, see the price, details and you can also remove the ordered items. Then, you can see your purchase in the cart where you can order more and reduce the amounts of items you ordered.
+LKH Store is an online e-commerce platform built with React and FastAPI. It features a modern, responsive frontend styled with Tailwind CSS and a robust backend API powered by FastAPI.
 
-### Tools - React, Tailwind CSS
+## Technologies Used
 
-https://onlinestore-rho.vercel.app/
+### Frontend
+- React
+- Tailwind CSS
+- React Hooks for state management
+
+### Backend
+- FastAPI (under development)
+
+## Project Structure
+
+lkh-store/
+├── frontend/
+│   ├── public/
+│   └── src/
+│       ├── components/
+│       ├── hooks/
+│       ├── pages/
+│       ├── utils/
+│       ├── App.js
+│       └── index.js
+├── backend/
+│   ├── app/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── main.py
+│   └── requirements.txt
+└── README.md
+
 
