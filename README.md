@@ -12,24 +12,4 @@ LKH Store is an online e-commerce platform built with React and FastAPI. It feat
 ### Backend
 - FastAPI (under development)
 
-## Project Structure
-
-lkh-store/
-├── frontend/
-│   ├── public/
-│   └── src/
-│       ├── components/
-│       ├── hooks/
-│       ├── pages/
-│       ├── utils/
-│       ├── App.js
-│       └── index.js
-├── backend/
-│   ├── app/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   └── main.py
-│   └── requirements.txt
-└── README.md
-
 
