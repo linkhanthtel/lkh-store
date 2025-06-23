@@ -364,12 +364,12 @@ export const Shop = () => {
             <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               Smooth{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                Product Showcase
+                Latest Collections
               </span>
             </h2>
 
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Browse our featured products with smooth transitions and optimized performance
+              Experience the most amazing shopping experience
             </p>
 
             {cartQuantity > 0 && (
