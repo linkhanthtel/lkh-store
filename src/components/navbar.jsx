@@ -1,20 +1,19 @@
+"use client"
+
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { FcGoogle } from "react-icons/fc"
 import { ImHome3 } from "react-icons/im"
-import { FaShoppingBag, FaSearch, FaMoon, FaSun, FaUserCircle, FaShoppingCart } from "react-icons/fa"
+import { FaShoppingBag, FaSearch, FaUserCircle, FaShoppingCart } from "react-icons/fa"
 import { BsMinecart } from "react-icons/bs"
-import { MdSell, MdExpandMore, MdKeyboardArrowRight } from "react-icons/md"
+import { MdSell } from "react-icons/md"
 import { CiMenuFries } from "react-icons/ci"
 import { RxCross2 } from "react-icons/rx"
-
-const categories = ["Electronics", "Clothing", "Books", "Home & Garden"]
+import { HiSparkles } from "react-icons/hi"
 
 export const Navbar = () => {
   const [toggle, setToggle] = useState(false)
-  const [darkMode, setDarkMode] = useState(false)
-  const [showCategories, setShowCategories] = useState(false)
   const [searchFocused, setSearchFocused] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [scrolled, setScrolled] = useState(false)
@@ -22,7 +21,6 @@ export const Navbar = () => {
 
   useEffect(() => {
     setToggle(false)
-    setShowCategories(false)
   }, [location.pathname])
 
   useEffect(() => {
@@ -34,17 +32,19 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-    document.documentElement.classList.toggle("dark")
-  }
-
-  // Animation variants
+  // Futuristic animation variants
   const navbarVariants = {
-    hidden: { y: -100, opacity: 0 },
+    hidden: {
+      y: -100,
+      opacity: 0,
+      boxShadow: "0 0 0 rgba(147, 51, 234, 0)",
+    },
     visible: {
       y: 0,
       opacity: 1,
+      boxShadow: scrolled
+        ? "0 25px 50px -12px rgba(147, 51, 234, 0.25), 0 0 100px rgba(59, 130, 246, 0.15)"
+        : "0 10px 25px -5px rgba(147, 51, 234, 0.1)",
       transition: {
         type: "spring",
         stiffness: 100,
@@ -54,12 +54,17 @@ export const Navbar = () => {
   }
 
   const mobileMenuVariants = {
-    hidden: { height: 0, opacity: 0 },
+    hidden: {
+      height: 0,
+      opacity: 0,
+      backdropFilter: "blur(0px)",
+    },
     visible: {
       height: "auto",
       opacity: 1,
+      backdropFilter: "blur(20px)",
       transition: {
-        duration: 0.3,
+        duration: 0.4,
         staggerChildren: 0.1,
         when: "beforeChildren",
       },
@@ -67,6 +72,7 @@ export const Navbar = () => {
     exit: {
       height: 0,
       opacity: 0,
+      backdropFilter: "blur(0px)",
       transition: {
         duration: 0.3,
         when: "afterChildren",
@@ -77,379 +83,342 @@ export const Navbar = () => {
   }
 
   const menuItemVariants = {
-    hidden: { x: -20, opacity: 0 },
+    hidden: { x: -30, opacity: 0, scale: 0.9 },
     visible: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.2 },
-    },
-    exit: {
-      x: -20,
-      opacity: 0,
-      transition: { duration: 0.2 },
-    },
-  }
-
-  const dropdownVariants = {
-    hidden: { opacity: 0, y: -10, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
       scale: 1,
       transition: {
-        duration: 0.2,
-        staggerChildren: 0.05,
+        duration: 0.3,
+        type: "spring",
+        stiffness: 200,
       },
     },
     exit: {
+      x: -30,
       opacity: 0,
-      y: -10,
-      scale: 0.95,
+      scale: 0.9,
       transition: { duration: 0.2 },
     },
   }
 
-  const dropdownItemVariants = {
-    hidden: { x: -10, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.2 },
-    },
-    exit: {
-      x: -10,
-      opacity: 0,
-      transition: { duration: 0.1 },
-    },
+  const glowEffect = {
+    boxShadow: `0 0 20px rgba(147, 51, 234, 0.4), 0 0 40px rgba(59, 130, 246, 0.2)`,
   }
 
   return (
-    <div className={`${darkMode ? "dark" : ""} sticky top-0 z-50`}>
+    <div className="fixed top-0 w-full z-50">
       <motion.div
-        className={`bg-white dark:bg-gray-900 shadow-md transition-all duration-300 ${scrolled ? "shadow-lg" : ""}`}
+        className="relative backdrop-blur-xl bg-white/90 border-b border-purple-200/20"
         variants={navbarVariants}
         initial="hidden"
         animate="visible"
+        style={{
+          background: scrolled
+            ? "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(147,51,234,0.05) 50%, rgba(59,130,246,0.05) 100%)"
+            : "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(147,51,234,0.02) 50%, rgba(59,130,246,0.02) 100%)",
+        }}
       >
+        {/* Animated background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-blue-500/5 to-cyan-500/5 animate-pulse" />
+
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-purple-400/30 rounded-full"
+              style={{
+                left: `${20 + i * 15}%`,
+                top: "50%",
+              }}
+              animate={{
+                y: [-10, 10, -10],
+                opacity: [0.3, 0.8, 0.3],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+                delay: i * 0.2,
+              }}
+            />
+          ))}
+        </div>
+
         {/* Mobile Menu */}
-        <div className="md:hidden flex justify-between items-center p-3 bg-gradient-to-r from-purple-700 to-blue-700">
+        <div className="md:hidden flex justify-between items-center p-3">
           <div className="flex items-center">
-            <motion.button onClick={() => setToggle(!toggle)} whileTap={{ scale: 0.95 }} className="mr-3 p-1">
-              {toggle ? <RxCross2 className="text-2xl text-white" /> : <CiMenuFries className="text-2xl text-white" />}
+            <motion.button
+              onClick={() => setToggle(!toggle)}
+              className="mr-2 p-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg"
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 25px -5px rgba(147, 51, 234, 0.4)",
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {toggle ? <RxCross2 className="text-lg" /> : <CiMenuFries className="text-lg" />}
             </motion.button>
+
             <Link to="/" className="flex items-center">
-              <motion.img
-                src="/logo.png"
-                alt="Logo"
-                className="w-8 h-8 mr-2"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-              />
-              <h1 className="text-lg font-bold text-white">LKH Store</h1>
+              <motion.div
+                className="relative w-8 h-8 mr-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center shadow-lg"
+                whileHover={{
+                  rotate: 360,
+                  boxShadow: "0 0 30px rgba(147, 51, 234, 0.6)",
+                }}
+                transition={{ duration: 0.6 }}
+              >
+                <HiSparkles className="text-white text-sm" />
+              </motion.div>
+              <h1 className="text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                LKH Store
+              </h1>
             </Link>
           </div>
 
-          <div className="flex items-center space-x-2">
-            <motion.button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full bg-white/10 backdrop-blur-sm text-white"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-white" />}
-            </motion.button>
+          <div className="flex items-center">
             <Link to="/cart">
-              <motion.div className="relative p-2" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <FaShoppingCart className="text-xl text-white" />
-                <span className="absolute -top-1 -right-1 bg-yellow-400 text-xs text-gray-900 font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              <motion.div
+                className="relative p-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg"
+                whileHover={{
+                  scale: 1.1,
+                  boxShadow: "0 10px 25px -5px rgba(147, 51, 234, 0.4)",
+                }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <FaShoppingCart className="text-white text-lg" />
+                <motion.span
+                  className="absolute -top-1 -right-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-xs text-gray-900 font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                >
                   3
-                </span>
+                </motion.span>
               </motion.div>
             </Link>
           </div>
         </div>
 
+        {/* Mobile Menu Content */}
         <AnimatePresence>
           {toggle && (
             <motion.nav
-              className="w-full bg-gradient-to-b from-blue-800 to-purple-900 text-white overflow-hidden"
+              className="md:hidden overflow-hidden bg-gradient-to-b from-purple-900/90 via-blue-900/90 to-indigo-900/90 backdrop-blur-xl border-t border-purple-500/20"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
             >
-              <div className="p-4 mb-2">
-                <div className="relative flex items-center bg-white/10 backdrop-blur-sm rounded-full overflow-hidden mb-4">
-                  <input
-                    type="text"
-                    placeholder="Search products..."
-                    className="w-full py-2 px-4 bg-transparent text-white placeholder-gray-300 focus:outline-none"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
-                  <motion.button
-                    className="bg-white/20 text-white p-2 rounded-full mr-1"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <FaSearch />
-                  </motion.button>
-                </div>
+              <div className="p-4">
+                {/* Search Bar */}
+                <motion.div
+                  className="relative mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <div className="relative flex items-center bg-white/10 backdrop-blur-sm rounded-xl border border-purple-300/20 overflow-hidden">
+                    <input
+                      type="text"
+                      placeholder="Search products..."
+                      className="w-full py-2 px-3 bg-transparent text-white placeholder-purple-200 focus:outline-none text-sm"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <motion.button
+                      className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-2 m-1 rounded-lg"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <FaSearch className="text-sm" />
+                    </motion.button>
+                  </div>
+                </motion.div>
 
+                {/* Sign In Button */}
                 <motion.button
-                  className="flex items-center justify-center w-full px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white"
-                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center justify-center w-full px-4 py-2 bg-white/10 backdrop-blur-sm rounded-xl text-white border border-purple-300/20 mb-4"
+                  whileHover={{
+                    scale: 1.02,
+                    backgroundColor: "rgba(255, 255, 255, 0.15)",
+                  }}
                   whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
                 >
                   <FcGoogle className="mr-2 text-lg" />
-                  <span>Sign In with Google</span>
+                  <span className="font-medium text-sm">Sign In with Google</span>
                 </motion.button>
-              </div>
 
-              <motion.div className="border-t border-white/10 pt-2" variants={menuItemVariants}>
-                <Link
-                  to="/"
-                  className="flex items-center justify-between px-6 py-3 hover:bg-white/10 transition-colors duration-200"
-                >
-                  <div className="flex items-center">
-                    <ImHome3 className="mr-3 text-lg" />
-                    <span>Home</span>
-                  </div>
-                  <MdKeyboardArrowRight className="text-gray-400" />
-                </Link>
-              </motion.div>
-
-              <motion.div className="border-t border-white/10" variants={menuItemVariants}>
-                <Link
-                  to="/shop"
-                  className="flex items-center justify-between px-6 py-3 hover:bg-white/10 transition-colors duration-200"
-                >
-                  <div className="flex items-center">
-                    <FaShoppingBag className="mr-3 text-lg" />
-                    <span>Shop</span>
-                  </div>
-                  <MdKeyboardArrowRight className="text-gray-400" />
-                </Link>
-              </motion.div>
-
-              <motion.div className="border-t border-white/10" variants={menuItemVariants}>
-                <Link
-                  to="/cart"
-                  className="flex items-center justify-between px-6 py-3 hover:bg-white/10 transition-colors duration-200"
-                >
-                  <div className="flex items-center">
-                    <BsMinecart className="mr-3 text-lg" />
-                    <span>Cart</span>
-                  </div>
-                  <MdKeyboardArrowRight className="text-gray-400" />
-                </Link>
-              </motion.div>
-
-              <motion.div className="border-t border-white/10" variants={menuItemVariants}>
-                <Link
-                  to="/bestsellers"
-                  className="flex items-center justify-between px-6 py-3 hover:bg-white/10 transition-colors duration-200"
-                >
-                  <div className="flex items-center">
-                    <MdSell className="mr-3 text-lg" />
-                    <span>Best Sellers</span>
-                  </div>
-                  <MdKeyboardArrowRight className="text-gray-400" />
-                </Link>
-              </motion.div>
-
-              <motion.div className="border-t border-white/10 pb-2" variants={menuItemVariants}>
-                <div className="px-6 py-3 text-gray-300 text-sm">
-                  <h3 className="font-semibold mb-2">Categories</h3>
-                  <div className="grid grid-cols-2 gap-2">
-                    {categories.map((category, index) => (
+                {/* Navigation Links */}
+                <div className="space-y-2">
+                  {[
+                    { to: "/", icon: ImHome3, label: "Home" },
+                    { to: "/shop", icon: FaShoppingBag, label: "Shop" },
+                    { to: "/cart", icon: BsMinecart, label: "Cart" },
+                    { to: "/bestsellers", icon: MdSell, label: "Best Sellers" },
+                  ].map((item, index) => (
+                    <motion.div key={item.to} variants={menuItemVariants}>
                       <Link
-                        key={index}
-                        to={`/shop?category=${category}`}
-                        className="px-3 py-1.5 bg-white/5 rounded-md hover:bg-white/10 transition-colors duration-200"
+                        to={item.to}
+                        className="flex items-center px-3 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-purple-300/10 text-white hover:bg-white/10 transition-all duration-300"
+                        onClick={() => setToggle(false)}
                       >
-                        {category}
+                        <item.icon className="mr-3 text-base text-purple-300" />
+                        <span className="font-medium text-sm">{item.label}</span>
+                        <div className="ml-auto w-1.5 h-1.5 bg-purple-400 rounded-full opacity-50" />
                       </Link>
-                    ))}
-                  </div>
+                    </motion.div>
+                  ))}
                 </div>
-              </motion.div>
+              </div>
             </motion.nav>
           )}
         </AnimatePresence>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex md:flex-col">
-          <div
-            className={`flex justify-between items-center p-3 bg-gradient-to-r from-purple-700 to-blue-700 text-white transition-all duration-300 ${
-              scrolled ? "py-2" : "py-3"
-            }`}
-          >
-            <div className="flex items-center">
-              <Link to="/" className="flex items-center">
-                <motion.img
-                  src="/logo.png"
-                  alt="Logo"
-                  className="w-8 h-8 mr-2"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                />
-                <h1 className="text-xl font-bold">LKH Store</h1>
-              </Link>
-            </div>
+        <div className="hidden md:flex items-center justify-between px-6 py-3">
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <motion.div
+              className="relative w-10 h-10 mr-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center shadow-xl"
+              whileHover={{
+                rotate: 360,
+                boxShadow: "0 0 40px rgba(147, 51, 234, 0.6)",
+              }}
+              transition={{ duration: 0.6 }}
+            >
+              <HiSparkles className="text-white text-lg" />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 blur opacity-50" />
+            </motion.div>
+            <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              LKH Store
+            </h1>
+          </Link>
 
-            <div className="relative">
-              <motion.div
-                className={`flex items-center bg-white/10 backdrop-blur-sm rounded-full overflow-hidden transition-all duration-300`}
-                animate={{ width: searchFocused ? 384 : 256 }}
-              >
+          {/* Navigation Links */}
+          <nav className="flex items-center space-x-6">
+            {[
+              { to: "/", icon: ImHome3, label: "Home" },
+              { to: "/shop", icon: FaShoppingBag, label: "Shop" },
+              { to: "/cart", icon: BsMinecart, label: "Cart" },
+              { to: "/bestsellers", icon: MdSell, label: "Best Sellers" },
+            ].map((item) => (
+              <Link key={item.to} to={item.to} className="group relative">
+                <motion.div
+                  className={`flex items-center px-3 py-2 rounded-lg transition-all duration-300 ${
+                    location.pathname === item.to
+                      ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg"
+                      : "text-gray-100 hover:text-purple-600"
+                  }`}
+                  whileHover={
+                    location.pathname !== item.to
+                      ? {
+                          scale: 1.05,
+                          backgroundColor: "rgba(147, 51, 234, 0.1)",
+                        }
+                      : {}
+                  }
+                  whileTap={{ scale: 0.95 }}
+                  style={location.pathname === item.to ? glowEffect : {}}
+                >
+                  <item.icon className="mr-2 text-base" />
+                  <span className="font-medium text-sm">{item.label}</span>
+                </motion.div>
+
+                {/* Animated underline */}
+                {location.pathname === item.to && (
+                  <motion.div
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"
+                    layoutId="activeTab"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right Side Controls */}
+          <div className="flex items-center space-x-3">
+            {/* Search Bar */}
+            <motion.div
+              className="relative"
+              animate={{ width: searchFocused ? 280 : 200 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="relative flex items-center bg-white/10 backdrop-blur-sm rounded-xl border border-purple-200/20 overflow-hidden">
                 <input
                   type="text"
                   placeholder="Search products..."
-                  className="w-full py-2 px-4 bg-transparent text-white placeholder-gray-300 focus:outline-none"
+                  className="w-full py-2 px-3 bg-transparent text-gray-700 placeholder-gray-500 focus:outline-none text-sm"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   onFocus={() => setSearchFocused(true)}
                   onBlur={() => setSearchFocused(false)}
                 />
                 <motion.button
-                  className="bg-white/20 text-white p-2 rounded-full mr-1"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-2 m-1 rounded-lg"
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 5px 15px rgba(147, 51, 234, 0.4)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <FaSearch />
+                  <FaSearch className="text-sm" />
                 </motion.button>
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
 
-            <div className="flex items-center space-x-4">
-              <motion.button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-full bg-white/10 backdrop-blur-sm text-white"
-                whileHover={{ scale: 1.1 }}
+            {/* Cart */}
+            <Link to="/cart">
+              <motion.div
+                className="relative p-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg"
+                whileHover={{
+                  scale: 1.1,
+                  boxShadow: "0 10px 25px -5px rgba(147, 51, 234, 0.4)",
+                }}
                 whileTap={{ scale: 0.9 }}
               >
-                {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-white" />}
-              </motion.button>
+                <FaShoppingCart className="text-white text-lg" />
+                <motion.span
+                  className="absolute -top-1 -right-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-xs text-gray-900 font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                >
+                  3
+                </motion.span>
+              </motion.div>
+            </Link>
 
-              <Link to="/cart">
-                <motion.div className="relative p-2" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                  <FaShoppingCart className="text-xl text-white" />
-                  <span className="absolute -top-1 -right-1 bg-yellow-400 text-xs text-gray-900 font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                    3
-                  </span>
-                </motion.div>
-              </Link>
+            {/* Sign In */}
+            <motion.button
+              className="flex items-center px-3 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-purple-200/20 text-gray-700"
+              whileHover={{
+                scale: 1.05,
+                backgroundColor: "rgba(147, 51, 234, 0.1)",
+                boxShadow: "0 5px 15px rgba(147, 51, 234, 0.2)",
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FcGoogle className="mr-2 text-base" />
+              <span className="font-medium text-sm">Sign In</span>
+            </motion.button>
 
-              <motion.button
-                className="flex items-center px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors duration-200"
+            {/* Account */}
+            <Link to="/account">
+              <motion.div
+                className="flex items-center text-gray-600 hover:text-purple-600 transition-colors duration-200"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FcGoogle className="mr-2 text-lg" />
-                <span>Sign In</span>
-              </motion.button>
-            </div>
+                <FaUserCircle className="text-xl" />
+              </motion.div>
+            </Link>
           </div>
-
-          <nav
-            className={`flex justify-between items-center px-6 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-sm transition-all duration-300 ${
-              scrolled ? "py-2" : "py-3"
-            }`}
-          >
-            <div className="flex space-x-8">
-              <Link
-                to="/"
-                className={`flex items-center hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 ${
-                  location.pathname === "/" ? "text-purple-600 dark:text-purple-400 font-medium" : ""
-                }`}
-              >
-                <ImHome3 className="mr-1.5" />
-                <span>Home</span>
-              </Link>
-
-              <div className="relative">
-                <motion.button
-                  className={`flex items-center hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 ${
-                    location.pathname === "/shop" ? "text-purple-600 dark:text-purple-400 font-medium" : ""
-                  }`}
-                  onClick={() => setShowCategories(!showCategories)}
-                  onMouseEnter={() => setShowCategories(true)}
-                  onMouseLeave={() => setShowCategories(false)}
-                >
-                  <FaShoppingBag className="mr-1.5" />
-                  <span>Shop</span>
-                  <MdExpandMore
-                    className={`ml-1 transform transition-transform duration-200 ${showCategories ? "rotate-180" : ""}`}
-                  />
-                </motion.button>
-
-                <AnimatePresence>
-                  {showCategories && (
-                    <motion.div
-                      className="absolute top-full left-0 mt-1 bg-white dark:bg-gray-800 z-10 shadow-lg rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 min-w-[180px]"
-                      variants={dropdownVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                      onMouseEnter={() => setShowCategories(true)}
-                      onMouseLeave={() => setShowCategories(false)}
-                    >
-                      <div className="py-1">
-                        <Link
-                          to="/shop"
-                          className="block px-4 py-2 text-gray-800 dark:text-white hover:bg-purple-50 dark:hover:bg-gray-700 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
-                        >
-                          All Products
-                        </Link>
-
-                        {categories.map((category, index) => (
-                          <motion.div key={index} variants={dropdownItemVariants}>
-                            <Link
-                              to={`/shop?category=${category}`}
-                              className="block px-4 py-2 text-gray-800 dark:text-white hover:bg-purple-50 dark:hover:bg-gray-700 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
-                            >
-                              {category}
-                            </Link>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              <Link
-                to="/cart"
-                className={`flex items-center hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 ${
-                  location.pathname === "/cart" ? "text-purple-600 dark:text-purple-400 font-medium" : ""
-                }`}
-              >
-                <BsMinecart className="mr-1.5" />
-                <span>Cart</span>
-              </Link>
-
-              <Link
-                to="/bestsellers"
-                className={`flex items-center hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 ${
-                  location.pathname === "/bestsellers" ? "text-purple-600 dark:text-purple-400 font-medium" : ""
-                }`}
-              >
-                <MdSell className="mr-1.5" />
-                <span>Best Sellers</span>
-              </Link>
-            </div>
-
-            <div className="flex items-center">
-              <Link
-                to="/"
-                className="flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
-              >
-                <FaUserCircle className="mr-1.5 text-lg" />
-                <span>My Account</span>
-              </Link>
-            </div>
-          </nav>
         </div>
       </motion.div>
     </div>
