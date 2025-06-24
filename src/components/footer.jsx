@@ -31,7 +31,7 @@ export const Footer = () => {
 
   return (
     <motion.footer 
-      className="bg-gradient-to-r from-blue-900 to-blue-700 text-white"
+      className="bg-gradient-to-r z-10 from-blue-900 to-blue-700 text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
