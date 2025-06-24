@@ -336,18 +336,10 @@ export const Shop = () => {
           )}
         </div>
 
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white flex flex-col items-center z-10"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-        >
-          <p className="text-sm mb-2">Scroll to explore</p>
-          <FaChevronDown />
-        </motion.div>
       </motion.section>
 
       {/* Carousel Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-gradient-to-b from-gray-200 to-purple-500">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -362,7 +354,6 @@ export const Shop = () => {
             </motion.div>
 
             <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Smooth{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
                 Latest Collections
               </span>
