@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useCallback, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaHeart, FaRocket } from "react-icons/fa"
@@ -335,16 +333,6 @@ export const Footer = () => {
                       ease: "easeInOut",
                     }}
                   />
-
-                  {/* Icon Container */}
-                  <div
-                    className="relative w-12 h-12 rounded-full flex items-center justify-center border-2 border-white/20 backdrop-blur-sm transition-all duration-300 group-hover:border-white/50"
-                    style={{
-                      background: `linear-gradient(135deg, ${link.color}20, ${link.color}40)`,
-                    }}
-                  >
-                    <span className="text-white text-lg">{link.icon}</span>
-                  </div>
                 </motion.a>
               ))}
             </motion.div>
@@ -449,7 +437,7 @@ export const Footer = () => {
               }}
               style={{ backgroundSize: "200% 200%" }}
             >
-              Neural Network
+              Join new era of shopping
             </motion.h3>
 
             <motion.div
@@ -601,7 +589,7 @@ export const Footer = () => {
               ease: "easeInOut",
             }}
           >
-            © {new Date().getFullYear()} LKH Store. Crafted with
+            © {new Date().getFullYear()} LKH Store
             <motion.span
               animate={{
                 scale: [1, 1.3, 1],
@@ -613,9 +601,8 @@ export const Footer = () => {
                 ease: "easeInOut",
               }}
             >
-              <FaHeart className="text-red-400" />
             </motion.span>
-            in the digital realm. All rights reserved.
+            | For Hobby Project
           </motion.p>
         </motion.div>
       </div>
